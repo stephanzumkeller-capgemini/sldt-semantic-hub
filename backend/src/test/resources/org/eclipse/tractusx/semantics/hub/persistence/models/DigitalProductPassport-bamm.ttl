@@ -602,8 +602,7 @@
 :concentration a bamm:Property;
     bamm:preferredName "Concentration"@en;
     bamm:description "Concentration of substances of concern at the level of the product."@en;
-    bamm:characteristic :Either;
-    bamm:exampleValue "13.6".
+    bamm:characteristic :Either.
 :ConcentrationEnumeration a bamm-c:Enumeration;
     bamm:preferredName "Concentration Enumeration"@en;
     bamm:description "Enumeration of possible units of concentration with percent, volume percent, parts per thousand, parts per million, parts per billion and parts per trillion."@en;

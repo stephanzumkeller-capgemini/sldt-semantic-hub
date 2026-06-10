@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+### Changed
+- Upgrade ESMF SDK to version 2.10.3 with support for SAMM 2.2.0
+- Upgrade Jena client libraries to version 5.3.0 (required by ESMF SDK 2.10.x)
+- Upgrade to Java 21 (required by ESMF SDK 2.10.x) in build, CI workflows and Docker images
+- Update lombok to version 1.18.38
+- Update testcontainers to version 1.21.4 for compatibility with current Docker Engine releases
+
 ## 0.6.0
 ### fixed
 - fixed cve CVE-2024-38819 spring-webmvc

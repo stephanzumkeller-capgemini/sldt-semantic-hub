@@ -19,12 +19,12 @@
 ###############################################################
 
 # Docker buildfile to containerize the semantics layer
-FROM maven:3-eclipse-temurin-17-alpine AS builder
+FROM maven:3-eclipse-temurin-21-alpine AS builder
 COPY . /build
 WORKDIR /build
 RUN mvn package -DskipTests
 
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:21-jre-alpine
 
 RUN addgroup -g 101 -S spring \
     && adduser -u 100 -S spring -G spring \

@@ -118,7 +118,7 @@ public class ModelsApiTest extends AbstractModelsApiTest{
          .andDo( MockMvcResultHandlers.print() )
          .andExpect( jsonPath( "$.error.message", containsString("Validation failed" ) ) )
             .andExpect( jsonPath( "$.error.details.validationError", containsString(
-                  "Resource urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#bool has no type" ) ) )
+                  "Resource urn:samm:org.eclipse.esmf.samm:characteristic:2.2.0#bool has no type" ) ) )
          .andExpect( status().is4xxClientError() );
    }
 
@@ -532,7 +532,7 @@ public class ModelsApiTest extends AbstractModelsApiTest{
 
       mvc.perform(post( insertModelJson ))
             .andDo( MockMvcResultHandlers.print() )
-				.andExpect( jsonPath( "$.error.details.validationError", containsString("Resource urn:samm:org.eclipse.esmf.samm:characteristic:2.1.0#Bool has no type" ) ) )
+				.andExpect( jsonPath( "$.error.details.validationError", containsString("Resource urn:samm:org.eclipse.esmf.samm:characteristic:2.2.0#Bool has no type" ) ) )
 				.andExpect( status().is4xxClientError() );
    }
 
@@ -1076,6 +1076,41 @@ public class ModelsApiTest extends AbstractModelsApiTest{
                 .andExpect( jsonPath( "$.error.message", containsString("Validation failed" ) ) )
                 .andExpect( jsonPath( "$.error.details.validationError", containsString("TripleStoreResolutionStrategy: definition for urn:samm:io.catenax.shared.quantity:1.0.0#VolumeCharacteristic not found" ) ) )
                 .andExpect( status().is4xxClientError() );
+    }
+
+    @Test
+    public void testSaveSamm220ModelExpectSuccess() throws Exception {
+        String HANDOVER_DOCUMENTATION_FILE = "HandoverDocumentation-1.0.0.ttl";
+        String urn = "urn:samm:io.admin-shell.idta.batterypass.handover_documentation:1.0.0#HandoverDocumentation";
+
+        mvc.perform( post( TestUtils.getTTLFile( HANDOVER_DOCUMENTATION_FILE ), "DRAFT" ) )
+                .andDo( MockMvcResultHandlers.print() )
+                .andExpect( status().isOk() )
+                .andExpect( jsonPath( "$.urn", is( urn ) ) )
+                .andExpect( jsonPath( "$.version", is( "1.0.0" ) ) )
+                .andExpect( jsonPath( "$.name", is( "HandoverDocumentation" ) ) )
+                .andExpect( jsonPath( "$.type", is( "SAMM" ) ) )
+                .andExpect( jsonPath( "$.status", is( "DRAFT" ) ) );
+
+        // the stored turtle file must keep the SAMM 2.2.0 meta model version
+        mvc.perform( MockMvcRequestBuilders.get( "/api/v1/models/{urn}/file", urn )
+                        .with( jwtTokenFactory.allRoles() ) )
+                .andDo( MockMvcResultHandlers.print() )
+                .andExpect( status().isOk() )
+                .andExpect( content().string( containsString( "urn:samm:org.eclipse.esmf.samm:meta-model:2.2.0" ) ) );
+
+        mvc.perform( MockMvcRequestBuilders.get( "/api/v1/models/{urn}/json-schema", urn )
+                        .with( jwtTokenFactory.allRoles() ) )
+                .andDo( MockMvcResultHandlers.print() )
+                .andExpect( status().isOk() )
+                .andExpect( jsonPath( "$.description",
+                        containsString( "Handover Documentation defines a set of meta data" ) ) );
+
+        mvc.perform( MockMvcRequestBuilders.get( "/api/v1/models/{urn}/example-payload", urn )
+                        .with( jwtTokenFactory.allRoles() ) )
+                .andDo( MockMvcResultHandlers.print() )
+                .andExpect( status().isOk() )
+                .andExpect( jsonPath( "$.Documents" ).exists() );
     }
 
     @Test

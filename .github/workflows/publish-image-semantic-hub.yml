@@ -48,11 +48,11 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: temurin
-          java-version: 17
+          java-version: 21
       - name: Setup Maven Action
         uses: s4u/setup-maven-action@v1.7.0
         with:
-          java-version: 17
+          java-version: 21
       - name: execute-maven-deps
         working-directory: ./backend
         run: mvn verify dependency:list -DskipTests -Dmaven.javadoc.skip=true -DappendOutput=false -DoutputFile=maven.deps -DincludeScope=compile
