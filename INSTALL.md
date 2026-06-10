@@ -22,11 +22,11 @@ If you have a running Kubernetes cluster available, you can deploy the Semantic 
 
 ## Precondition
 Build fuseki docker image by following the below steps :
-- Download [jena-fuseki-docker-5.0.0.zip](https://repo1.maven.org/maven2/org/apache/jena/jena-fuseki-docker/5.0.0/jena-fuseki-docker-5.0.0.zip)
-- Unzip the jena-fuseki-docker-5.0.0.zip.
-- Build the docker image by running the command - `docker build --build-arg JENA_VERSION=5.0.0 -t jena-fuseki-docker:5.0.0 .`
+- Download [jena-fuseki-docker-5.3.0.zip](https://repo1.maven.org/maven2/org/apache/jena/jena-fuseki-docker/5.3.0/jena-fuseki-docker-5.3.0.zip)
+- Unzip the jena-fuseki-docker-5.3.0.zip.
+- Build the docker image by running the command - `docker build --build-arg JENA_VERSION=5.3.0 -t jena-fuseki-docker:5.3.0 .`
 
-This docker image `jena-fuseki-docker:5.0.0` will be used in the Helm deployment and test - [values.yaml](charts/semantic-hub/values.yaml) (graphdb.image).
+This docker image `jena-fuseki-docker:5.3.0` will be used in the Helm deployment and test - [values.yaml](charts/semantic-hub/values.yaml) (graphdb.image).
 
 ## Install Instructions
 
@@ -81,7 +81,7 @@ The Helm Chart can be configured using the following parameters (incomplete list
 | ---             |---------------------------------------------------------------------------------------------------------|----------------------------|
 | `graphdb.enabled`     | Configures, whether a separate Fuseki Triplestore should be deployed in the cluster.                    | `true`                     |
 | `graphdb.storageClassName`     | Defines the storage class name of the `PersistentVolumeClaim` that is used to persist the GraphDB data. | `standard`                 |
-| `graphdb.image`     | Defines the fuseki docker image and version details.                                                    | `jena-fuseki-docker:5.0.0` |
+| `graphdb.image`     | Defines the fuseki docker image and version details.                                                    | `jena-fuseki-docker:5.3.0` |
 | `graphdb.storageSize`     | Size of the `PersistentVolumeClaim`                                                                     | `50Gi`                     |
 
 ### Prerequisites

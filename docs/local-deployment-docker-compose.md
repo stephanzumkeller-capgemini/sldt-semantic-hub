@@ -27,7 +27,7 @@ at the repository root bundles the same services the Helm chart deploys:
 | Service        | Image                          | Purpose                                            | Host port |
 |----------------|--------------------------------|----------------------------------------------------|-----------|
 | `semantic-hub` | `semantic-hub:local` (built)   | The Semantic Hub backend                           | 4242      |
-| `graphdb`      | `jena-fuseki-docker:5.0.0`     | Apache Jena Fuseki triple store (persistent, TDB2) | 3030      |
+| `graphdb`      | `jena-fuseki-docker:5.3.0`     | Apache Jena Fuseki triple store (persistent, TDB2) | 3030      |
 
 ## Prerequisites
 
@@ -43,10 +43,10 @@ The triple store image is not published on a public registry and must be built
 locally once (same precondition as for the Helm deployment):
 
 ```bash
-curl -LO https://repo1.maven.org/maven2/org/apache/jena/jena-fuseki-docker/5.0.0/jena-fuseki-docker-5.0.0.zip
-unzip jena-fuseki-docker-5.0.0.zip
-cd jena-fuseki-docker-5.0.0
-docker build --build-arg JENA_VERSION=5.0.0 -t jena-fuseki-docker:5.0.0 .
+curl -LO https://repo1.maven.org/maven2/org/apache/jena/jena-fuseki-docker/5.3.0/jena-fuseki-docker-5.3.0.zip
+unzip jena-fuseki-docker-5.3.0.zip
+cd jena-fuseki-docker-5.3.0
+docker build --build-arg JENA_VERSION=5.3.0 -t jena-fuseki-docker:5.3.0 .
 cd ..
 ```
 

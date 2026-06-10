@@ -28,7 +28,7 @@ services:
   # The image is not published on a registry and must be built locally first,
   # see the "Build the Fuseki image" step in the guide.
   graphdb:
-    image: jena-fuseki-docker:5.0.0
+    image: jena-fuseki-docker:5.3.0
     command: ["--tdb2", "--update", "--loc", "databases/", "/ds"]
     environment:
       JAVA_OPTIONS: "-Xmx1048m -Xms1048m"
