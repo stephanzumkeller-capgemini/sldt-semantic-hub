@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - JUnit Jupiter and AssertJ are now managed by the Spring Boot BOM instead of explicit downgrading pins: junit-jupiter 5.9.3 -> 5.12.2, assertj-core 3.24.2 -> 3.27.7
 - Upgrade maven-surefire-plugin from 3.0.0-M5 to 3.5.6 and MapStruct from 1.5.3.Final to 1.6.3; the compiler plugin now uses `<release>` instead of `<source>/<target>`
 - Remove the obsolete commons-fileupload exclusion and 1.5 pin (CVE-2023-24998): Jena 5 no longer uses `commons-fileupload:commons-fileupload`; the legacy artifact is gone from the dependency tree
+- Tune Dependabot configuration: point the docker ecosystem at `/backend` (where the only Dockerfile lives), group related maven updates (spring, jackson, jena, test) into combined PRs and raise the maven open-pull-requests-limit from 5 to 10
 - Remove the protobuf-java exclusion on jena-arq (CVE-2024-7254): Jena 5.3.0 ships protobuf-java 4.29.3, which contains the fix (4.27.5+); Jena's protobuf result formats are available again
 - Upgrade jackson-databind-nullable from 0.1.0 to 0.2.6
 - Upgrade httpclient from 4.5.12 to 4.5.14 (still used directly by the triple store client configuration)
