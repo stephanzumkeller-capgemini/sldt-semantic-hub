@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove the duplicated `commons-text` 1.10.0 dependency management entries; the newer 1.13.0 brought in transitively by the ESMF SDK is now resolved instead of being downgraded
 - Upgrade TopBraid SHACL from 1.3.1 to 1.4.4 (the SHACL 1.4.x line targets Jena 5; 1.5.0 requires Jena 6)
 - Misc dependency bumps: commons-compress 1.26.0 -> 1.28.0, guava 32.1.1-jre -> 33.6.0-jre, slf4j 2.0.7 -> 2.0.18, commons-io 2.17.0 -> 2.22.0; jsr305 is now declared explicitly (guava 33.x no longer brings it transitively); removed the unreferenced `collection-utlis.version` property
+- Helm chart: replace the deprecated Bitnami Keycloak subchart (Bitnami discontinued its free public chart catalog in August 2025) with a minimal in-chart Keycloak deployment based on the official `quay.io/keycloak/keycloak` image (26.6.3, dev mode with embedded H2 store, default realm import preserved). This only affects the dev/test convenience deployment gated by `enableKeycloak`; the service name `hub-keycloak` and port stay the same, Bitnami-specific values (`keycloak.command`/`args`, `keycloak.fullnameOverride`, `keycloak.postgresql`, `keycloak.extraVolumes`/`extraVolumeMounts`) were removed and `helm dependency build` is no longer required
 
 ### Fixed
 - Pin classgraph to 4.8.184: the 4.8.90 resolved transitively (via easy-random-core) cannot scan Spring Boot nested jars and broke AAS XML/AASX generation in the packaged application

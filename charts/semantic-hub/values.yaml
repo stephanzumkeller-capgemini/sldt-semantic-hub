@@ -101,28 +101,32 @@ graphdb:
   service:
     port: 3030
 
+# Minimal in-chart Keycloak deployment, intended for development and
+# testing only (gated by 'enableKeycloak'). It runs the official Keycloak
+# image in dev mode ('start-dev') with the embedded H2 store and imports a
+# pre-configured default realm (config/default-realm-import.json) on startup,
+# containing a test client and user with the necessary roles to authorize
+# requests to the semantic hub. For production, disable it and configure an
+# external identity provider via 'hub.idpIssuerUri'.
 keycloak:
-  postgresql:
-    enabled: false
+  image:
+    registry: quay.io
+    repository: keycloak/keycloak
+    tag: 26.6.3
+  imagePullPolicy: IfNotPresent
   auth:
-    adminUser:
-    adminPassword:
+    adminUser: admin
+    adminPassword: admin
+  containerPort: 8080
   service:
     type: ClusterIP
-  extraVolumes:
-    - name: init-script-vol
-      configMap:
-        name: init-script-vol
-  # Mounting a keycloak realm configuration file
-  fullnameOverride: hub-keycloak
-  extraVolumeMounts:
-    - mountPath: /opt/keycloak/data/import/default-realm-import.json
-      subPath: default-realm-import.json
-      name: init-script-vol
-  # Using a pre-configured Keycloak with a default realm,
-  # containing a test client and user with the necessary roles to
-  # authorize requests to the semantic hub.
-  # Make sure to remove the '--hostname' property when deploying
-  # in a non-test scenario
-  command: ["/bin/sh", "-c"]
-  args: ["kc.sh import --file /opt/keycloak/data/import/default-realm-import.json; kc.sh start-dev --hostname=registry-keycloak --hostname-strict=false --proxy=edge --proxy=edge"]
+    # The default issuer URI of the hub
+    # (http://hub-keycloak/realms/default-realm) expects port 80
+    port: 80
+  resources:
+    limits:
+      cpu: 750m
+      memory: 1024Mi
+    requests:
+      cpu: 250m
+      memory: 512Mi

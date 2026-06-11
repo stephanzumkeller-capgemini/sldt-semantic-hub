@@ -1,0 +1,92 @@
+###############################################################
+# Copyright (c) 2026 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License, Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0.
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+# License for the specific language governing permissions and limitations
+# under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
+###############################################################
+
+# Minimal Keycloak deployment for development and testing only.
+# Runs the official Keycloak image in dev mode (embedded H2 store)
+# and imports the default realm on startup.
+{{- if .Values.enableKeycloak }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hub-keycloak
+  labels:
+    helm.sh/chart: {{ include "hub.chart" . }}
+    app.kubernetes.io/name: hub-keycloak
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/component: keycloak
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hub-keycloak
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: hub-keycloak
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/component: keycloak
+    spec:
+      containers:
+        - name: keycloak
+          image: {{ .Values.keycloak.image.registry }}/{{ .Values.keycloak.image.repository }}:{{ .Values.keycloak.image.tag }}
+          imagePullPolicy: {{ .Values.keycloak.imagePullPolicy }}
+          args: ["start-dev", "--import-realm"]
+          securityContext:
+            allowPrivilegeEscalation: false
+          env:
+            - name: KC_BOOTSTRAP_ADMIN_USERNAME
+              value: {{ .Values.keycloak.auth.adminUser | quote }}
+            - name: KC_BOOTSTRAP_ADMIN_PASSWORD
+              value: {{ .Values.keycloak.auth.adminPassword | quote }}
+            - name: KC_HEALTH_ENABLED
+              value: "true"
+            - name: KC_PROXY_HEADERS
+              value: xforwarded
+          ports:
+            - name: http
+              containerPort: {{ .Values.keycloak.containerPort | int }}
+            - name: management
+              containerPort: 9000
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: management
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 6
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: management
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 10
+          resources:
+{{ .Values.keycloak.resources | toYaml | indent 12 }}
+          volumeMounts:
+            - name: realm-import
+              mountPath: /opt/keycloak/data/import
+              readOnly: true
+      volumes:
+        - name: realm-import
+          configMap:
+            name: {{ include "hub.fullname" . }}-keycloak-init-script-configmap
+{{- end }}

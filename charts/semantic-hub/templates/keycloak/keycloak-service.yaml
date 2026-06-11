@@ -1,6 +1,5 @@
 ###############################################################
-# Copyright (c) 2021, 2024 Robert Bosch Manufacturing Solutions GmbH
-# Copyright (c) 2021, 2024 Contributors to the Eclipse Foundation
+# Copyright (c) 2026 Contributors to the Eclipse Foundation
 #
 # See the NOTICE file(s) distributed with this work for additional
 # information regarding copyright ownership.
@@ -18,13 +17,25 @@
 # SPDX-License-Identifier: Apache-2.0
 ###############################################################
 
-apiVersion: v2
-name: semantic-hub
-description: Helm Chart for the Catena-X Semantic Hub Application
-home: https://eclipse-tractusx.github.io/
-sources:
-  - https://github.com/eclipse-tractusx/sldt-semantic-hub
-
-type: application
-version: 0.6.0
-appVersion: 0.7.0
+{{- if .Values.enableKeycloak }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: hub-keycloak
+  labels:
+    helm.sh/chart: {{ include "hub.chart" . }}
+    app.kubernetes.io/name: hub-keycloak
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/component: keycloak
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.keycloak.service.type }}
+  ports:
+    - name: http
+      protocol: TCP
+      port: {{ .Values.keycloak.service.port | int }}
+      targetPort: http
+  selector:
+    app.kubernetes.io/name: hub-keycloak
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}

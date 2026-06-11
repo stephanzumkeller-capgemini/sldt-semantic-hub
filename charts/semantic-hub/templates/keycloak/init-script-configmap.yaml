@@ -17,6 +17,7 @@
 # SPDX-License-Identifier: Apache-2.0
 ---
 
+{{- if .Values.enableKeycloak }}
 kind: ConfigMap
 apiVersion: v1
 metadata:
@@ -24,3 +25,4 @@ metadata:
 data:
   default-realm-import.json: |-
 {{ .Files.Get "config/default-realm-import.json" | indent 4 }}
+{{- end }}
