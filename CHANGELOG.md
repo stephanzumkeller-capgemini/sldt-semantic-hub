@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added docker-compose setup for local deployment (`docker-compose.yml`, see `docs/local-deployment-docker-compose.md`)
 
 ### Changed
+- Upgrade Spring Boot from 3.2.5 to 3.5.15; Spring Framework (6.2.x) and Spring Security (6.5.x) are now managed by the Spring Boot BOM instead of explicit version overrides
+- Remove stale CVE-related version pins now covered by the Spring Boot BOM: snakeyaml 2.0 (now 2.4), mixed Jackson pins 2.12.7/2.13.1/2.14.0 (now a single Boot-managed Jackson version), and the spring-webmvc 6.1.14 / spring-security 6.3.4 overrides
+- Remove the jackson-dataformat-xml 2.12.7 downgrade and the woodstox-core 6.4.0 pin (the historic AASX XML prefix bug no longer occurs with the Boot-managed versions; verified via ModelsApiTest#testAasxEndpointExpectSuccess)
 - Upgrade ESMF SDK to version 2.10.3 with support for SAMM 2.2.0
 - Upgrade Jena client libraries to version 5.3.0 (required by ESMF SDK 2.10.x)
 - **Breaking (build/runtime requirement):** Upgrade to Java 21 (required by ESMF SDK 2.10.x) in build, CI workflows and Docker images
