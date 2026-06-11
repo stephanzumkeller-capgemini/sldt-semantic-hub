@@ -66,15 +66,10 @@
 		<!-- version properties -->
 		<!-- framework and base stuff -->
 		<spring.boot.version>3.5.15</spring.boot.version>
-		<spring.feign.version>3.1.3</spring.feign.version>
-		<springdoc.version>1.6.14</springdoc.version>
-		<springfox.version>2.9.2</springfox.version>
 		<collection-utlis.version>4.4</collection-utlis.version>
 		<lombok.version>1.18.38</lombok.version>
-		<javax-annotation-api.version>1.3.2</javax-annotation-api.version>
-		<swagger-annotations.version>1.5.20</swagger-annotations.version>
-		<swagger-core-version>2.0.0</swagger-core-version>
-		<openapi-starter-webmvc-ui.version>2.0.2</openapi-starter-webmvc-ui.version>
+		<swagger-core-version>2.2.50</swagger-core-version>
+		<openapi-starter-webmvc-ui.version>2.8.17</openapi-starter-webmvc-ui.version>
 		<guava.version>32.1.1-jre</guava.version>
 		<vavr.version>0.10.3</vavr.version>
 		<commons-io.version>2.17.0</commons-io.version>
@@ -89,7 +84,6 @@
 
 		<!-- json, xml, formats, ... -->
 		<json.version>2.0.1</json.version>
-		<jaxb-api.version>2.3.1</jaxb-api.version>
 
 		<!-- semantics -->
         <samm.sdk.version>2.10.3</samm.sdk.version>
@@ -121,19 +115,9 @@
 			<!-- Predefined potential dependencies and versions -->
 			<!-- Java Stuff -->
 			<dependency>
-				<groupId>javax.annotation</groupId>
-				<artifactId>javax.annotation-api</artifactId>
-				<version>${javax-annotation-api.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-compress</artifactId>
 				<version>1.26.0</version>
-			</dependency>
-			<dependency>
-				<groupId>javax.xml.bind</groupId>
-				<artifactId>jaxb-api</artifactId>
-				<version>${jaxb-api.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.projectlombok</groupId>
@@ -231,26 +215,9 @@
 			</dependency>
 			<!-- Open API Stuff -->
 			<dependency>
-				<groupId>org.springdoc</groupId>
-				<artifactId>springdoc-openapi-ui</artifactId>
-				<version>${springdoc.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-swagger2</artifactId>
-				<version>${springfox.version}</version>
-			</dependency>
-
-			<!-- Communication -->
-			<dependency>
 				<groupId>io.swagger.core.v3</groupId>
 				<artifactId>swagger-annotations</artifactId>
 				<version>${swagger-core-version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.swagger</groupId>
-				<artifactId>swagger-annotations</artifactId>
-				<version>${swagger-annotations.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springdoc</groupId>
@@ -496,7 +463,7 @@
 				<plugin>
 				<groupId>org.openapitools</groupId>
 				<artifactId>openapi-generator-maven-plugin</artifactId>
-				<version>6.2.1</version>
+				<version>7.23.0</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>

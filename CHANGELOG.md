@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Align Fuseki triple store image with the Jena client libraries: jena-fuseki-docker 5.0.0 -> 5.3.0 (CI, Helm values, docker-compose, documentation)
 - Update lombok to version 1.18.38
 - Update testcontainers to version 1.21.4 for compatibility with current Docker Engine releases
+- Upgrade springdoc-openapi (springdoc-openapi-starter-webmvc-ui) from 2.0.2 to 2.8.17 and align swagger-core (io.swagger.core.v3:swagger-annotations) from 2.0.0 to 2.2.50
+- Upgrade openapi-generator-maven-plugin from 6.2.1 to 7.23.0 (drops the obsolete `oas3`/`useSpringfox` generator options)
+- Remove unused Boot-2-era managed dependencies springdoc-openapi-ui (1.6.14) and springfox-swagger2 (2.9.2) as well as the unreferenced `spring.feign.version` property
+- Remove legacy `javax.annotation:javax.annotation-api`, `javax.xml.bind:jaxb-api` and swagger v1 `io.swagger:swagger-annotations` dependencies; the generated stubs now only use jakarta and swagger v3 annotations
 
 ## 0.6.0
 ### fixed
