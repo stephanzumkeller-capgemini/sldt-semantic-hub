@@ -22,6 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgrade openapi-generator-maven-plugin from 6.2.1 to 7.23.0 (drops the obsolete `oas3`/`useSpringfox` generator options)
 - Remove unused Boot-2-era managed dependencies springdoc-openapi-ui (1.6.14) and springfox-swagger2 (2.9.2) as well as the unreferenced `spring.feign.version` property
 - Remove legacy `javax.annotation:javax.annotation-api`, `javax.xml.bind:jaxb-api` and swagger v1 `io.swagger:swagger-annotations` dependencies; the generated stubs now only use jakarta and swagger v3 annotations
+- Remove the unused JUnit 4 dependency (`junit:junit` 4.13.2) from dependency management; no JUnit 4 imports remain in the codebase
+- JUnit Jupiter and AssertJ are now managed by the Spring Boot BOM instead of explicit downgrading pins: junit-jupiter 5.9.3 -> 5.12.2, assertj-core 3.24.2 -> 3.27.7
+- Upgrade maven-surefire-plugin from 3.0.0-M5 to 3.5.6 and MapStruct from 1.5.3.Final to 1.6.3; the compiler plugin now uses `<release>` instead of `<source>/<target>`
 
 ## 0.6.0
 ### fixed
