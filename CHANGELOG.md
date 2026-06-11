@@ -25,6 +25,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove the unused JUnit 4 dependency (`junit:junit` 4.13.2) from dependency management; no JUnit 4 imports remain in the codebase
 - JUnit Jupiter and AssertJ are now managed by the Spring Boot BOM instead of explicit downgrading pins: junit-jupiter 5.9.3 -> 5.12.2, assertj-core 3.24.2 -> 3.27.7
 - Upgrade maven-surefire-plugin from 3.0.0-M5 to 3.5.6 and MapStruct from 1.5.3.Final to 1.6.3; the compiler plugin now uses `<release>` instead of `<source>/<target>`
+- Remove the obsolete commons-fileupload exclusion and 1.5 pin (CVE-2023-24998): Jena 5 no longer uses `commons-fileupload:commons-fileupload`; the legacy artifact is gone from the dependency tree
+- Remove the protobuf-java exclusion on jena-arq (CVE-2024-7254): Jena 5.3.0 ships protobuf-java 4.29.3, which contains the fix (4.27.5+); Jena's protobuf result formats are available again
+- Upgrade jackson-databind-nullable from 0.1.0 to 0.2.6
+- Upgrade httpclient from 4.5.12 to 4.5.14 (still used directly by the triple store client configuration)
+- Remove the duplicated `commons-text` 1.10.0 dependency management entries; the newer 1.13.0 brought in transitively by the ESMF SDK is now resolved instead of being downgraded
+- Upgrade TopBraid SHACL from 1.3.1 to 1.4.4 (the SHACL 1.4.x line targets Jena 5; 1.5.0 requires Jena 6)
+- Misc dependency bumps: commons-compress 1.26.0 -> 1.28.0, guava 32.1.1-jre -> 33.6.0-jre, slf4j 2.0.7 -> 2.0.18, commons-io 2.17.0 -> 2.22.0; jsr305 is now declared explicitly (guava 33.x no longer brings it transitively); removed the unreferenced `collection-utlis.version` property
 
 ### Fixed
 - Pin classgraph to 4.8.184: the 4.8.90 resolved transitively (via easy-random-core) cannot scan Spring Boot nested jars and broke AAS XML/AASX generation in the packaged application

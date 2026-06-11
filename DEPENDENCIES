@@ -23,11 +23,12 @@ maven/mavencentral/com.github.stephenc.jcip/jcip-annotations/1.0-1, Apache-2.0, 
 maven/mavencentral/com.github.virtuald/curvesapi/1.08, BSD-3-Clause AND Apache-2.0, approved, #23170
 maven/mavencentral/com.google.code.findbugs/jsr305/3.0.2, Apache-2.0 and CC-BY-2.5, approved, #15220
 maven/mavencentral/com.google.code.gson/gson/2.13.2, Apache-2.0, approved, #20656
-maven/mavencentral/com.google.errorprone/error_prone_annotations/2.18.0, Apache-2.0, approved, #26405
-maven/mavencentral/com.google.guava/failureaccess/1.0.1, Apache-2.0, approved, CQ22654
-maven/mavencentral/com.google.guava/guava/32.1.1-jre, Apache-2.0 AND CC0-1.0 AND LicenseRef-Public-Domain, approved, #9229
+maven/mavencentral/com.google.errorprone/error_prone_annotations/2.47.0, Apache-2.0, approved, #25985
+maven/mavencentral/com.google.guava/failureaccess/1.0.3, Apache-2.0, approved, CQ22654
+maven/mavencentral/com.google.guava/guava/33.6.0-jre, Apache-2.0 AND CC-PDDC, approved, #27169
 maven/mavencentral/com.google.guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava, Apache-2.0, approved, CQ22657
-maven/mavencentral/com.google.j2objc/j2objc-annotations/2.8, Apache-2.0, approved, #23147
+maven/mavencentral/com.google.j2objc/j2objc-annotations/3.1, Apache-2.0, approved, #23379
+maven/mavencentral/com.google.protobuf/protobuf-java/4.29.3, BSD-3-Clause, approved, #19173
 maven/mavencentral/com.jayway.jsonpath/json-path/2.9.0, Apache-2.0, approved, #20009
 maven/mavencentral/com.networknt/json-schema-validator/1.5.4, Apache-2.0 AND Unicode-TOU, approved, #15630
 maven/mavencentral/com.nimbusds/nimbus-jose-jwt/9.37.4, Apache-2.0, approved, #11701
@@ -37,8 +38,7 @@ maven/mavencentral/commons-beanutils/commons-beanutils/1.9.4, Apache-2.0, approv
 maven/mavencentral/commons-cli/commons-cli/1.9.0, Apache-2.0, approved, #15950
 maven/mavencentral/commons-codec/commons-codec/1.18.0, Apache-2.0 AND (Apache-2.0 AND BSD-3-Clause), approved, #19214
 maven/mavencentral/commons-collections/commons-collections/3.2.2, Apache-2.0, approved, #15185
-maven/mavencentral/commons-fileupload/commons-fileupload/1.5, Apache-2.0, approved, #7109
-maven/mavencentral/commons-io/commons-io/2.17.0, Apache-2.0, approved, #16198
+maven/mavencentral/commons-io/commons-io/2.22.0, Apache-2.0, approved, #27491
 maven/mavencentral/commons-logging/commons-logging/1.2, Apache-2.0, approved, CQ10162
 maven/mavencentral/io.github.classgraph/classgraph/4.8.184, MIT, approved, CQ22530
 maven/mavencentral/io.micrometer/micrometer-commons/1.15.12, Apache-2.0 AND (Apache-2.0 AND MIT), approved, #23144
@@ -77,16 +77,15 @@ maven/mavencentral/net.bytebuddy/byte-buddy/1.17.8, Apache-2.0 AND BSD-3-Clause,
 maven/mavencentral/net.java.dev.jna/jna/5.13.0, Apache-2.0 AND LGPL-2.1-or-later, approved, #15196
 maven/mavencentral/net.minidev/accessors-smart/2.5.2, Apache-2.0, approved, #19432
 maven/mavencentral/net.minidev/json-smart/2.5.2, Apache-2.0, approved, #19431
-maven/mavencentral/org.antlr/antlr4-runtime/4.5.3, BSD-2-Clause, approved, CQ9834
 maven/mavencentral/org.apache.commons/commons-collections4/4.4, Apache-2.0, approved, #17660
-maven/mavencentral/org.apache.commons/commons-compress/1.26.0, Apache-2.0 AND (Apache-2.0 AND BSD-3-Clause), approved, #13288
+maven/mavencentral/org.apache.commons/commons-compress/1.28.0, Apache-2.0 AND (Apache-2.0 AND BSD-3-Clause), approved, #22677
 maven/mavencentral/org.apache.commons/commons-csv/1.13.0, Apache-2.0, approved, #18551
 maven/mavencentral/org.apache.commons/commons-fileupload2-core/2.0.0-M2, Apache-2.0, approved, #15738
 maven/mavencentral/org.apache.commons/commons-fileupload2-jakarta-servlet6/2.0.0-M2, Apache-2.0, approved, #21710
 maven/mavencentral/org.apache.commons/commons-lang3/3.17.0, Apache-2.0, approved, #16044
 maven/mavencentral/org.apache.commons/commons-math3/3.6.1, Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause, approved, CQ22025
-maven/mavencentral/org.apache.commons/commons-text/1.10.0, Apache-2.0, approved, clearlydefined
-maven/mavencentral/org.apache.httpcomponents/httpclient/4.5.12, Apache-2.0, approved, #15248
+maven/mavencentral/org.apache.commons/commons-text/1.13.0, Apache-2.0, approved, #17931
+maven/mavencentral/org.apache.httpcomponents/httpclient/4.5.14, Apache-2.0, approved, #15248
 maven/mavencentral/org.apache.httpcomponents/httpcore/4.4.16, Apache-2.0, approved, CQ23528
 maven/mavencentral/org.apache.jena/jena-arq/5.3.0, Apache-2.0 AND (Apache-2.0 AND EPL-2.0) AND (EPL-2.0 OR Apache-2.0), approved, #20098
 maven/mavencentral/org.apache.jena/jena-base/5.3.0, Apache-2.0 AND MIT, approved, clearlydefined
@@ -156,7 +155,6 @@ maven/mavencentral/org.apiguardian/apiguardian-api/1.1.2, Apache-2.0, approved, 
 maven/mavencentral/org.assertj/assertj-core/3.27.7, Apache-2.0, approved, #17980
 maven/mavencentral/org.awaitility/awaitility/4.2.2, Apache-2.0, approved, #14178
 maven/mavencentral/org.bouncycastle/bcprov-jdk18on/1.79, MIT AND CC0-1.0, approved, #16964
-maven/mavencentral/org.checkerframework/checker-qual/3.33.0, MIT, approved, clearlydefined
 maven/mavencentral/org.codehaus.plexus/plexus-archiver/4.12.0, Apache-2.0, approved, #28645
 maven/mavencentral/org.codehaus.plexus/plexus-io/3.6.0, Apache-2.0, approved, #24660
 maven/mavencentral/org.codehaus.plexus/plexus-utils/3.6.1, Apache-2.0 AND Entessa AND Apache-1.1 AND BSD-3-Clause AND BSD-2-Clause AND SAX-PD AND LicenseRef-Public-Domain, approved, #21842
@@ -245,7 +243,7 @@ maven/mavencentral/org.mapstruct/mapstruct/1.6.3, Apache-2.0, approved, #21156
 maven/mavencentral/org.mockito/mockito-core/5.17.0, MIT AND (Apache-2.0 AND MIT) AND Apache-2.0, approved, #20444
 maven/mavencentral/org.mockito/mockito-junit-jupiter/5.17.0, MIT, approved, #20445
 maven/mavencentral/org.objenesis/objenesis/3.3, Apache-2.0, approved, #19727
-maven/mavencentral/org.openapitools/jackson-databind-nullable/0.1.0, Apache-2.0, approved, clearlydefined
+maven/mavencentral/org.openapitools/jackson-databind-nullable/0.2.6, Apache-2.0, approved, #3294
 maven/mavencentral/org.opentest4j/opentest4j/1.3.0, Apache-2.0, approved, #9713
 maven/mavencentral/org.ow2.asm/asm-commons/9.10, BSD-3-Clause, approved, #28390
 maven/mavencentral/org.ow2.asm/asm-tree/9.10, BSD-3-Clause, approved, #28389
@@ -255,10 +253,10 @@ maven/mavencentral/org.projectlombok/lombok/1.18.38, MIT, approved, #15192
 maven/mavencentral/org.rnorth.duct-tape/duct-tape/1.0.8, MIT, approved, clearlydefined
 maven/mavencentral/org.roaringbitmap/RoaringBitmap/1.3.0, Apache-2.0, approved, clearlydefined
 maven/mavencentral/org.skyscreamer/jsonassert/1.5.3, Apache-2.0, approved, clearlydefined
-maven/mavencentral/org.slf4j/jcl-over-slf4j/2.0.7, MIT AND Apache-2.0, approved, #11889
-maven/mavencentral/org.slf4j/jul-to-slf4j/2.0.7, MIT, approved, #7698
-maven/mavencentral/org.slf4j/slf4j-api/2.0.7, MIT, approved, #5915
-maven/mavencentral/org.slf4j/slf4j-simple/2.0.7, MIT, approved, #10372
+maven/mavencentral/org.slf4j/jcl-over-slf4j/2.0.18, MIT AND Apache-2.0, approved, #11889
+maven/mavencentral/org.slf4j/jul-to-slf4j/2.0.18, MIT, approved, #7698
+maven/mavencentral/org.slf4j/slf4j-api/2.0.18, MIT, approved, #5915
+maven/mavencentral/org.slf4j/slf4j-simple/2.0.18, MIT, approved, #10372
 maven/mavencentral/org.springdoc/springdoc-openapi-starter-common/2.8.17, Apache-2.0, approved, #18209
 maven/mavencentral/org.springdoc/springdoc-openapi-starter-webmvc-api/2.8.17, Apache-2.0, approved, #18210
 maven/mavencentral/org.springdoc/springdoc-openapi-starter-webmvc-ui/2.8.17, Apache-2.0, approved, #18211
@@ -296,7 +294,7 @@ maven/mavencentral/org.springframework/spring-web/6.2.19, Apache-2.0, approved, 
 maven/mavencentral/org.springframework/spring-webmvc/6.2.19, Apache-2.0, approved, #17532
 maven/mavencentral/org.testcontainers/junit-jupiter/1.21.4, MIT, approved, clearlydefined
 maven/mavencentral/org.testcontainers/testcontainers/1.21.4, MIT, approved, #20874
-maven/mavencentral/org.topbraid/shacl/1.3.1, Apache-2.0, approved, clearlydefined
+maven/mavencentral/org.topbraid/shacl/1.4.4, Apache-2.0 AND W3C-20150513, approved, #8913
 maven/mavencentral/org.tukaani/xz/1.12, 0BSD, approved, #26283
 maven/mavencentral/org.webjars/swagger-ui/5.32.2, Apache-2.0 AND (Apache-2.0 AND MIT) AND MIT, approved, #27611
 maven/mavencentral/org.webjars/webjars-locator-lite/1.1.3, MIT, approved, #24484
