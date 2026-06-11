@@ -62,9 +62,8 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
                                               }
                                               return e.getDefaultMessage();
                                            } ) );
-      // TODO: the ErrorResponse classes are currently in the AAS api definition
-      // we should move that out to a general api definition. Error response should be identical for all semantic layer
-      // services.
+      // The ErrorResponse and Error schemas are defined in the shared components/schemas section of
+      // semantic-hub-openapi.yaml so the error wire format is identical across all semantic layer services.
       return new ResponseEntity<>( new ErrorResponse()
             .error( new Error()
                   .message( "Validation failed." )
