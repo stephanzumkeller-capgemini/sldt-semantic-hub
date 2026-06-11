@@ -26,6 +26,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - JUnit Jupiter and AssertJ are now managed by the Spring Boot BOM instead of explicit downgrading pins: junit-jupiter 5.9.3 -> 5.12.2, assertj-core 3.24.2 -> 3.27.7
 - Upgrade maven-surefire-plugin from 3.0.0-M5 to 3.5.6 and MapStruct from 1.5.3.Final to 1.6.3; the compiler plugin now uses `<release>` instead of `<source>/<target>`
 
+### Fixed
+- Pin classgraph to 4.8.184: the 4.8.90 resolved transitively (via easy-random-core) cannot scan Spring Boot nested jars and broke AAS XML/AASX generation in the packaged application
+
 ## 0.6.0
 ### fixed
 - fixed cve CVE-2024-38819 spring-webmvc
